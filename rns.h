@@ -25,9 +25,9 @@ void rns_init();
 
 int modulo_inverse(int a, int n);
 
-void rns_add(struct rns result, struct rns a, struct rns b);
-void rns_sub(struct rns result, struct rns a, struct rns b);
-void rns_mul(struct rns result, struct rns a, struct rns b);
+void rns_add(struct rns *result, struct rns *a, struct rns *b);
+void rns_sub(struct rns *result, struct rns *a, struct rns *b);
+void rns_mul(struct rns *result, struct rns *a, struct rns *b);
 
 void int_to_rns(struct rns result, struct int128 value);
 void rns_to_int(struct int128 result, struct rns value);
