@@ -6,7 +6,7 @@ M = 1
 for m in rns_base:
     M *= m
 
-alt_base = [M / rns_base[i] for i in range(len(rns_base))]
+alt_base = [M // rns_base[i] for i in range(len(rns_base))]
 
 def modulo_inverse(a, n):
     u = 1
