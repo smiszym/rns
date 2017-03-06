@@ -31,4 +31,9 @@ void rns_mul(struct rns result, struct rns a, struct rns b);
 void int_to_rns(struct rns result, struct int128 value);
 void rns_to_int(struct int128 result, struct rns value);
 
+
+// -- utils.c
+
+void print_rns(struct rns *value);
+
 #endif
