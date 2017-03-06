@@ -13,11 +13,14 @@ void rns_init()
 
 int main(int argc, char **argv)
 {
+        rns_init();
+
         printf("sizeof(struct rns) == %lu\n", sizeof(struct rns));
         printf("sizeof(struct int128) == %lu\n", sizeof(struct int128));
 
         struct rns rns_a;
         struct rns rns_b;
+        struct rns rns_result;
 
         if (argc == 3) {
                 fprintf(stderr, "Reading two decimal numbers: %s and %s\n", argv[1], argv[2]);
@@ -37,6 +40,19 @@ int main(int argc, char **argv)
                 fprintf(stderr, "The two numbers are:\n");
                 fprint_rns(stderr, &rns_a);
                 fprint_rns(stderr, &rns_b);
+
+                rns_add(&rns_result, &rns_a, &rns_b);
+                fprintf(stderr, "Sum: ");
+                fprint_rns(stderr, &rns_result);
+
+                rns_sub(&rns_result, &rns_a, &rns_b);
+                fprintf(stderr, "Difference: ");
+                fprint_rns(stderr, &rns_result);
+
+                rns_mul(&rns_result, &rns_a, &rns_b);
+                fprintf(stderr, "Product: ");
+                fprint_rns(stderr, &rns_result);
+
         } else {
                 fprintf(stderr, "Unknown mode of operation - "
                                 "wrong number of arguments "
