@@ -2,7 +2,7 @@
 
 all: rns
 
-main.o: main.c
+main.o: main.c rns.h
 	gcc -c -o $@ $<
 
 rns.o: rns.s rns.h
