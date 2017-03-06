@@ -19,6 +19,7 @@ struct int128 {
 
 struct rns rns_base;
 
+// Init RNS base to the project default
 void rns_init();
 
 int modulo_inverse(int a, int n);
