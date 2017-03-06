@@ -24,6 +24,8 @@ def rns_to_int(n):
     return 0
 
 def test_rns(a, b):
-    assert a+b == rns_to_int(rns_add(int_to_rns(a), int_to_rns(b)))
-    assert a-b == rns_to_int(rns_sub(int_to_rns(a), int_to_rns(b)))
-    assert a*b == rns_to_int(rns_mul(int_to_rns(a), int_to_rns(b)))
+    a_rns = int_to_rns(a)
+    b_rns = int_to_rns(b)
+    assert a+b == rns_to_int(rns_add(a_rns, b_rns))
+    assert a-b == rns_to_int(rns_sub(a_rns, b_rns))
+    assert a*b == rns_to_int(rns_mul(a_rns, b_rns))
