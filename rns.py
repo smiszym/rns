@@ -38,7 +38,7 @@ def int_to_rns(n):
     return [(n % q) for q in rns_base]
 
 def rns_to_int(n):
-    return 0
+    return sum([alt_base[i] * modulo_inverse(alt_base[i], rns_base[i]) * n[i] for i in range(len(rns_base))]) % M
 
 def test_rns(a, b):
     a_rns = int_to_rns(a)
