@@ -73,6 +73,46 @@ class TestPythonRNSConversion(unittest.TestCase):
             self.assertEqual(a, rns_to_int(int_to_rns(a)))
 
 
+class TestPythonRNSAdd(unittest.TestCase):
+
+    def test_stress(self):
+        random.seed()
+        for i in range(100000):
+            a = random.getrandbits(88)
+            b = random.getrandbits(88)
+            a_rns = int_to_rns(a)
+            b_rns = int_to_rns(b)
+            self.assertEqual(a+b, rns_to_int(rns_add(a_rns, b_rns)))
+
+
+class TestPythonRNSSub(unittest.TestCase):
+
+    def test_stress(self):
+        random.seed()
+        for i in range(100000):
+            a = random.getrandbits(89)
+            b = random.getrandbits(89)
+            if a < b:
+                tmp = a
+                a = b
+                b = tmp
+            a_rns = int_to_rns(a)
+            b_rns = int_to_rns(b)
+            self.assertEqual(a-b, rns_to_int(rns_sub(a_rns, b_rns)))
+
+
+class TestPythonRNSMul(unittest.TestCase):
+
+    def test_stress(self):
+        random.seed()
+        for i in range(100000):
+            a = random.getrandbits(44)
+            b = random.getrandbits(44)
+            a_rns = int_to_rns(a)
+            b_rns = int_to_rns(b)
+            self.assertEqual(a*b, rns_to_int(rns_mul(a_rns, b_rns)))
+
+
 if __name__ == "__main__":
     max = 1
     for i in rns_base:
