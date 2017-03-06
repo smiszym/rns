@@ -33,7 +33,7 @@ def rns_sub(a, b):
 
 def rns_mul(a, b):
     return [((a[i]*b[i]) % rns_base[i]) for i in range(len(rns_base))]
-        
+
 def int_to_rns(n):
     return [(n % q) for q in rns_base]
 
