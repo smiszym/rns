@@ -46,5 +46,8 @@ def test_rns(a, b):
     assert a == rns_to_int(a_rns)
     assert b == rns_to_int(b_rns)
     assert a+b == rns_to_int(rns_add(a_rns, b_rns))
-    assert a-b == rns_to_int(rns_sub(a_rns, b_rns))
     assert a*b == rns_to_int(rns_mul(a_rns, b_rns))
+    if a >= b:
+        assert a-b == rns_to_int(rns_sub(a_rns, b_rns))
+    else:
+        assert b-a == rns_to_int(rns_sub(b_rns, a_rns))
