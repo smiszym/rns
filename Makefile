@@ -11,8 +11,8 @@ main.o: main.c rns.h
 utils.o: utils.c rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
-rns.o: rns.s rns.h
+rns_add.o: rns_add.s rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
-rns: main.o rns.o utils.o
+rns: main.o rns_add.o utils.o
 	gcc ${CFLAGS} -o $@ $^
