@@ -1,0 +1,19 @@
+Copyright (C) 2016, Michał Szymański
+Praca na zaliczenie projektu Architektury Komputerów 2
+Politechnika Wrocławska
+
+Files in this directory:
+
+ Python implementation:
+   rns.py -- implementation of RNS system in Python
+   pytests.py -- test suite for Python implementation
+
+ Assembler implementation:
+   rns.h -- header file for RNS implementation
+   rns.s -- implementation of RNS system in Assembler
+   main.c -- main program doing computations in RNS using Assembler library
+
+Launching the Assembler implementation:
+  ./rns 56 78
+will compute sum, difference and multiplication of the given values in decimal
+system. All computations will be done using Assembler RNS library.
