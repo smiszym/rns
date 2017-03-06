@@ -17,3 +17,10 @@ Launching the Assembler implementation:
   ./rns 56 78
 will compute sum, difference and multiplication of the given values in decimal
 system. All computations will be done using Assembler RNS library.
+
+There is also another mode of execution, without conversion to decimal.
+When launched as:
+  ./rns 1 2 3 4 9 8 7 6
+the program will compute sum, difference and multiplication of the given
+values, interpreted as [1 2 3 4] and [9 8 7 6], and print the results also
+in RNS notation, one in a line.
