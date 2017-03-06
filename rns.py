@@ -8,6 +8,23 @@ for m in rns_base:
 
 alt_base = [M / rns_base[i] for i in range(len(rns_base))]
 
+def modulo_inverse(a, b):
+    u = 1
+    w = a
+    x = 0
+    z = b
+    while w > 0:
+        if w < z:
+            q = u; u = x; x = q
+            q = w; w = z; z = q
+        q = w // z
+        u -= q * x
+        w -= q * z
+    if z == 1:
+        if x < 0:
+            x += b
+        return x
+
 def rns_add(a, b):
     return [((a[i]+b[i]) % rns_base[i]) for i in range(len(rns_base))]
 
