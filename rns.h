@@ -18,7 +18,6 @@ struct int128 {
 } __attribute__((packed));
 
 struct rns rns_base;
-struct rns alt_base;
 
 void rns_init();
 
