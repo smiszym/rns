@@ -24,3 +24,6 @@ When launched as:
 the program will compute sum, difference and multiplication of the given
 values, interpreted as [1 2 3 4] and [9 8 7 6], and print the results also
 in RNS notation, one in a line.
+
+To run a test suite on a whole project, run:
+  ./pytests.py
