@@ -4,17 +4,17 @@
 #include <stdint.h>
 
 struct rns {
-        uint32_t m3;
-        uint32_t m2;
-        uint32_t m1;
-        uint32_t m0;
+        uint32_t r0;
+        uint32_t r1;
+        uint32_t r2;
+        uint32_t r3;
 } __attribute__((packed));
 
 struct int128 {
-        uint32_t x3;
+        uint32_t x3; // most significant
         uint32_t x2;
         uint32_t x1;
-        uint32_t x0;
+        uint32_t x0; // least significant
 } __attribute__((packed));
 
 struct rns rns_base;
