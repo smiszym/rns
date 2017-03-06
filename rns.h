@@ -2,6 +2,7 @@
 #define RNS_H
 
 #include <stdint.h>
+#include <stdio.h>
 
 struct rns {
         uint32_t r0;
@@ -35,5 +36,6 @@ void rns_to_int(struct int128 result, struct rns value);
 // -- utils.c
 
 void print_rns(struct rns *value);
+void fprint_rns(FILE *stream, struct rns *value);
 
 #endif
