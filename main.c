@@ -26,7 +26,9 @@ int main(int argc, char **argv)
 
         struct rns rns_a;
         struct rns rns_b;
-        struct rns rns_result;
+        struct rns rns_sum;
+        struct rns rns_diff;
+        struct rns rns_prod;
 
         if (argc == 3) {
                 fprintf(stderr, "Reading two decimal numbers: %s and %s\n", argv[1], argv[2]);
@@ -47,17 +49,17 @@ int main(int argc, char **argv)
                 fprint_rns(stderr, &rns_a);
                 fprint_rns(stderr, &rns_b);
 
-                rns_add(&rns_result, &rns_a, &rns_b);
+                rns_add(&rns_sum, &rns_a, &rns_b);
                 fprintf(stderr, "Sum: ");
-                fprint_rns(stderr, &rns_result);
+                fprint_rns(stderr, &rns_sum);
 
-                rns_sub(&rns_result, &rns_a, &rns_b);
+                rns_sub(&rns_diff, &rns_a, &rns_b);
                 fprintf(stderr, "Difference: ");
-                fprint_rns(stderr, &rns_result);
+                fprint_rns(stderr, &rns_diff);
 
-                rns_mul(&rns_result, &rns_a, &rns_b);
+                rns_mul(&rns_prod, &rns_a, &rns_b);
                 fprintf(stderr, "Product: ");
-                fprint_rns(stderr, &rns_result);
+                fprint_rns(stderr, &rns_prod);
 
         } else {
                 fprintf(stderr, "Unknown mode of operation - "
