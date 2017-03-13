@@ -15,8 +15,14 @@ int main(int argc, char **argv)
 {
         rns_init();
 
-        printf("sizeof(struct rns) == %lu\n", sizeof(struct rns));
-        printf("sizeof(struct int128) == %lu\n", sizeof(struct int128));
+        if (sizeof(struct rns) != 16) {
+                fprintf(stderr, "Error: sizeof(struct rns) != 16 B\nExiting.");
+                return 1;
+        }
+        if (sizeof(struct int128) != 16) {
+                fprintf(stderr, "Error: sizeof(struct int128) != 16 B\nExiting.");
+                return 1;
+        }
 
         struct rns rns_a;
         struct rns rns_b;
