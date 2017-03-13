@@ -45,21 +45,29 @@ int main(int argc, char **argv)
                 sscanf(argv[7], "%ul", &rns_b.r2);
                 sscanf(argv[8], "%ul", &rns_b.r3);
 
+                /* Actual operations */
+                rns_add(&rns_sum, &rns_a, &rns_b);
+                rns_sub(&rns_diff, &rns_a, &rns_b);
+                rns_mul(&rns_prod, &rns_a, &rns_b);
+
+                /* Human-readable: stderr */
                 fprintf(stderr, "The two numbers are:\n");
                 fprint_rns(stderr, &rns_a);
                 fprint_rns(stderr, &rns_b);
 
-                rns_add(&rns_sum, &rns_a, &rns_b);
                 fprintf(stderr, "Sum: ");
                 fprint_rns(stderr, &rns_sum);
 
-                rns_sub(&rns_diff, &rns_a, &rns_b);
                 fprintf(stderr, "Difference: ");
                 fprint_rns(stderr, &rns_diff);
 
-                rns_mul(&rns_prod, &rns_a, &rns_b);
                 fprintf(stderr, "Product: ");
                 fprint_rns(stderr, &rns_prod);
+
+                /* Computer-readable: stdout */
+                fprint_rns(stdout, &rns_sum);
+                fprint_rns(stdout, &rns_diff);
+                fprint_rns(stdout, &rns_prod);
 
         } else {
                 fprintf(stderr, "Unknown mode of operation - "
