@@ -1,3 +1,9 @@
 __pycache__
 *.o
 /rns
+
+/work.config
+/work.creator
+/work.creator.user
+/work.files
+/work.includes
