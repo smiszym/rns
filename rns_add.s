@@ -16,9 +16,9 @@ rns_add:
         xorq %rcx, %rcx
         movl 0x0(%rdx), %ecx
 
-        addq 0x0(%rdx), %rax
+        addq %rcx, %rax
 
-        movq 0x0(%rbx), %rcx
+        movl 0x0(%rbx), %ecx
         # There will be at most one above
         cmpq %rcx, %rax
         jl .L0
@@ -33,9 +33,9 @@ rns_add:
         xorq %rcx, %rcx
         movl 0x4(%rdx), %ecx
 
-        addq 0x4(%rdx), %rax
+        addq %rcx, %rax
 
-        movq 0x4(%rbx), %rcx
+        movl 0x4(%rbx), %ecx
         # There will be at most one above
         cmpq %rcx, %rax
         jl .L1
@@ -50,9 +50,9 @@ rns_add:
         xorq %rcx, %rcx
         movl 0x8(%rdx), %ecx
 
-        addq 0x8(%rdx), %rax
+        addq %rcx, %rax
 
-        movq 0x8(%rbx), %rcx
+        movl 0x8(%rbx), %ecx
         # There will be at most one above
         cmpq %rcx, %rax
         jl .L2
@@ -67,9 +67,9 @@ rns_add:
         xorq %rcx, %rcx
         movl 0xc(%rdx), %ecx
 
-        addq 0xc(%rdx), %rax
+        addq %rcx, %rax
 
-        movq 0xc(%rbx), %rcx
+        movl 0xc(%rbx), %ecx
         # There will be at most one above
         cmpq %rcx, %rax
         jl .L3
