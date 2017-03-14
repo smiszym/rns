@@ -17,5 +17,8 @@ rns_add.o: rns_add.s rns.h
 rns_sub.o: rns_sub.s rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
-rns: main.o rns_add.o rns_sub.o utils.o
+rns_mul.o: rns_mul.s rns.h
+	gcc ${CFLAGS} -c -o $@ $<
+
+rns: main.o rns_add.o rns_sub.o rns_mul.o utils.o
 	gcc ${CFLAGS} -o $@ $^
