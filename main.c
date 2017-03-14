@@ -3,6 +3,17 @@
 
 #include "rns.h"
 
+const char *usage =
+"Usage:\n"
+"  ./rns a\n"
+"     Converts a number to RNS form\n\n"
+"  ./rns a b\n"
+"     Reads two decimals; performs operations in RNS\n"
+"     and converts back to decimal\n\n"
+"  ./rns a0 a1 a2 a3 b0 b1 b2 b3\n"
+"     Reads two numbers in RNS form and performs\n"
+"     operations\n";
+
 void rns_init()
 {
         rns_base.r0 = 4294967197;
@@ -70,9 +81,7 @@ int main(int argc, char **argv)
                 fprint_rns(stdout, &rns_prod);
 
         } else {
-                fprintf(stderr, "Unknown mode of operation - "
-                                "wrong number of arguments "
-                                "(should be 2 or 8)\n");
+                fprintf(stderr, "Unknown mode of operation\n%s", usage);
                 return 1;
         }
 
