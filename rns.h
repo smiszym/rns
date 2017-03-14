@@ -12,10 +12,10 @@ struct rns {
 } __attribute__((packed));
 
 struct int128 {
-        uint32_t x3; // most significant
-        uint32_t x2;
-        uint32_t x1;
         uint32_t x0; // least significant
+        uint32_t x1;
+        uint32_t x2;
+        uint32_t x3; // most significant
 } __attribute__((packed));
 
 struct rns rns_base;
@@ -28,6 +28,11 @@ int modulo_inverse(int a, int n);
 void rns_add(struct rns *result, struct rns *a, struct rns *b);
 void rns_sub(struct rns *result, struct rns *a, struct rns *b);
 void rns_mul(struct rns *result, struct rns *a, struct rns *b);
+
+/*
+ * Returns 0 if the conversion was successful; 1 otherwise.
+ */
+int read_int128(struct int128 *result, const char *s);
 
 void int_to_rns(struct rns result, struct int128 value);
 void rns_to_int(struct int128 result, struct rns value);
