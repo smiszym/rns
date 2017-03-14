@@ -9,7 +9,8 @@ rns_add:
         pushq %rbx
         movq $rns_base, %rbx
 
-        # r0
+
+        # === r0 ===
         xorq %rax, %rax
         movl 0x0(%rsi), %eax
 
@@ -26,7 +27,8 @@ rns_add:
 .L0:
         movl %eax, 0x0(%rdi)
 
-        # r1
+
+        # === r1 ===
         xorq %rax, %rax
         movl 0x4(%rsi), %eax
 
@@ -43,7 +45,8 @@ rns_add:
 .L1:
         movl %eax, 0x4(%rdi)
 
-        # r2
+
+        # === r2 ===
         xorq %rax, %rax
         movl 0x8(%rsi), %eax
 
@@ -60,7 +63,8 @@ rns_add:
 .L2:
         movl %eax, 0x8(%rdi)
 
-        # r3
+
+        # === r3 ===
         xorq %rax, %rax
         movl 0xc(%rsi), %eax
 
