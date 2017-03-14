@@ -119,8 +119,8 @@ class TestNativeProgram(unittest.TestCase):
     def test_stress(self):
         random.seed()
         for i in range(1000):
-            a = random.getrandbits(44)
-            b = random.getrandbits(44)
+            a = random.getrandbits(89)
+            b = random.getrandbits(89)
             a_rns = int_to_rns(a)
             b_rns = int_to_rns(b)
             sum, diff, prod = invoke_native(a_rns, b_rns)
