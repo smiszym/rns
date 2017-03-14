@@ -17,8 +17,21 @@ void fprint_rns(FILE *stream, struct rns *value)
 
 void rns_mul(struct rns *result, struct rns *a, struct rns *b)
 {
-        result->r0 = (a->r0 * b->r0) % rns_base.r0;
-        result->r1 = (a->r1 * b->r1) % rns_base.r1;
-        result->r2 = (a->r2 * b->r2) % rns_base.r2;
-        result->r3 = (a->r3 * b->r3) % rns_base.r3;
+        uint64_t x;
+
+        x = (uint64_t) a->r0 * b->r0;
+        x = x % rns_base.r0;
+        result->r0 = x;
+
+        x = (uint64_t) a->r1 * b->r1;
+        x = x % rns_base.r1;
+        result->r1 = x;
+
+        x = (uint64_t) a->r2 * b->r2;
+        x = x % rns_base.r2;
+        result->r2 = x;
+
+        x = (uint64_t) a->r3 * b->r3;
+        x = x % rns_base.r3;
+        result->r3 = x;
 }
