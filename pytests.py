@@ -123,10 +123,14 @@ class TestNativeProgram(unittest.TestCase):
             b = random.getrandbits(89)
             a_rns = int_to_rns(a)
             b_rns = int_to_rns(b)
-            sum, diff, prod = invoke_native(a_rns, b_rns)
-            self.assertListEqual(rns_add(a_rns, b_rns), sum)
-            self.assertListEqual(rns_sub(a_rns, b_rns), diff)
-            self.assertListEqual(rns_mul(a_rns, b_rns), prod)
+
+            a_rns_native = invoke_native(a)
+            sum_native, diff_native, prod_native = invoke_native(a_rns, b_rns)
+
+            self.assertListEqual(a_rns, a_rns_native)
+            self.assertListEqual(rns_add(a_rns, b_rns), sum_native)
+            self.assertListEqual(rns_sub(a_rns, b_rns), diff_native)
+            self.assertListEqual(rns_mul(a_rns, b_rns), prod_native)
 
 
 if __name__ == "__main__":
