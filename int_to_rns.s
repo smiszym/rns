@@ -6,18 +6,17 @@ int_to_rns:
         # %rsi - address of int128_t to convert
         pushq %rbx
 
-        # Zero out the result
-        xorl %eax, %eax
-        movl %eax, 0x0(%rdi)
+        # === r1 ===
+        movl 0x0(%rsi), %eax
+        andl $0x7fffffff, %eax
         movl %eax, 0x4(%rdi)
-        movl %eax, 0x8(%rdi)
-        movl %eax, 0xc(%rdi)
 
 finished:
         popq %rbx
         xorq %rax, %rax
         ret
 error:
+        # Argument's value too big
         popq %rbx
         movq $1, %rax
         ret
