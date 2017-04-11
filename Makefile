@@ -11,6 +11,9 @@ main.o: main.c rns.h
 utils.o: utils.c rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
+rns_env.o: rns_env.s rns.h
+	gcc ${CFLAGS} -c -o $@ $<
+
 rns_add.o: rns_add.s rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
@@ -23,7 +26,7 @@ rns_mul.o: rns_mul.s rns.h
 read_int128.o: read_int128.s rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
-rns: main.o rns_add.o rns_sub.o rns_mul.o read_int128.o utils.o
+rns: main.o rns_env.o rns_add.o rns_sub.o rns_mul.o read_int128.o utils.o
 	gcc ${CFLAGS} -o $@ $^
 
 clean:

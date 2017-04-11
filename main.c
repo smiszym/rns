@@ -14,11 +14,20 @@ const char *usage =
 "     Reads two numbers in RNS form and performs\n"
 "     operations\n";
 
+const char *wrong_rns_base_msg =
+"Wrong RNS base initialized\n"
+"(This is a bug in the program code: %s:%d)\n"
+"Aborting.";
+
 void rns_init()
 {
-        rns_base.r0 = 0x7fffffff;
-        rns_base.r1 = 0x80000000;
-        rns_base.r2 = 0x80000001;
+        // Make sure that we have a correct RNS base
+        if (rns_base.r0 != 0x7fffffff
+         || rns_base.r1 != 0x80000000
+         || rns_base.r2 != 0x80000001) {
+                fprintf(stderr, wrong_rns_base_msg, __FILE__, __LINE__);
+                exit(1);
+        }
 }
 
 int main(int argc, char **argv)

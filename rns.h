@@ -18,7 +18,7 @@ struct int128 {
         uint32_t x3; // most significant
 } __attribute__((packed));
 
-struct rns rns_base;
+extern struct rns rns_base;
 
 // Init RNS base to the project default
 void rns_init();
