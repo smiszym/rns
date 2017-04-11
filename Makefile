@@ -1,7 +1,7 @@
 CFLAGS += -Wall
 CFLAGS += -g
 
-.PHONY: all
+.PHONY: all clean
 
 all: rns
 
@@ -25,3 +25,6 @@ read_int128.o: read_int128.s rns.h
 
 rns: main.o rns_add.o rns_sub.o rns_mul.o read_int128.o utils.o
 	gcc ${CFLAGS} -o $@ $^
+
+clean:
+	rm -rf *.o rns __pycache__
