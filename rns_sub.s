@@ -73,26 +73,5 @@ rns_sub:
         movl %eax, 0x8(%rdi)
 
 
-        # === r3 ===
-        xorq %rax, %rax
-        movl 0xc(%rsi), %eax
-
-        xorq %rcx, %rcx
-        movl 0xc(%rdx), %ecx
-
-        subq %rcx, %rax
-        jge .L31 # Result is not negative; skip correction
-        movl 0xc(%rbx), %ecx
-        addq %rcx, %rax
-.L31:
-        # There will be at most one above
-        movl 0xc(%rbx), %ecx
-        cmpq %rcx, %rax
-        jl .L32 # Result is in bounds; skip correction
-        subq %rcx, %rax
-.L32:
-        movl %eax, 0xc(%rdi)
-
-
         popq %rbx
         ret

@@ -10,16 +10,15 @@ const char *usage =
 "  ./rns a b\n"
 "     Reads two decimals; performs operations in RNS\n"
 "     and converts back to decimal\n\n"
-"  ./rns a0 a1 a2 a3 b0 b1 b2 b3\n"
+"  ./rns a0 a1 a2 b0 b1 b2\n"
 "     Reads two numbers in RNS form and performs\n"
 "     operations\n";
 
 void rns_init()
 {
-        rns_base.r0 = 4294967197;
-        rns_base.r1 = 4294967231;
-        rns_base.r2 = 4294967279;
-        rns_base.r3 = 4294967291;
+        rns_base.r0 = 0x7fffffff;
+        rns_base.r1 = 0x80000000;
+        rns_base.r2 = 0x80000001;
 }
 
 int main(int argc, char **argv)
@@ -55,18 +54,16 @@ int main(int argc, char **argv)
                 fprintf(stderr, "%s in binary form: %08x/%08x/%08x/%08x\n", argv[1], value.x3, value.x2, value.x1, value.x0);
         } else if (argc == 3) {
                 fprintf(stderr, "Reading two decimal numbers: %s and %s\n", argv[1], argv[2]);
-        } else if (argc == 9) {
+        } else if (argc == 7) {
                 fprintf(stderr, "Reading two numbers in RNS notation\n");
 
                 sscanf(argv[1], "%ul", &rns_a.r0);
                 sscanf(argv[2], "%ul", &rns_a.r1);
                 sscanf(argv[3], "%ul", &rns_a.r2);
-                sscanf(argv[4], "%ul", &rns_a.r3);
 
-                sscanf(argv[5], "%ul", &rns_b.r0);
-                sscanf(argv[6], "%ul", &rns_b.r1);
-                sscanf(argv[7], "%ul", &rns_b.r2);
-                sscanf(argv[8], "%ul", &rns_b.r3);
+                sscanf(argv[4], "%ul", &rns_b.r0);
+                sscanf(argv[5], "%ul", &rns_b.r1);
+                sscanf(argv[6], "%ul", &rns_b.r2);
 
                 /* Actual operations */
                 rns_add(&rns_sum, &rns_a, &rns_b);

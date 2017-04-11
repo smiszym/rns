@@ -63,23 +63,5 @@ rns_add:
 .L2:
         movl %eax, 0x8(%rdi)
 
-
-        # === r3 ===
-        xorq %rax, %rax
-        movl 0xc(%rsi), %eax
-
-        xorq %rcx, %rcx
-        movl 0xc(%rdx), %ecx
-
-        addq %rcx, %rax
-
-        movl 0xc(%rbx), %ecx
-        # There will be at most one above
-        cmpq %rcx, %rax
-        jl .L3
-        subq %rcx, %rax
-.L3:
-        movl %eax, 0xc(%rdi)
-
         popq %rbx
         ret

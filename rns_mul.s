@@ -94,33 +94,5 @@ rns_mul:
         pop %rdx
 
 
-        # === r3 ===
-        xorq %rax, %rax
-        movl 0xc(%rsi), %eax
-
-        xorq %rcx, %rcx
-        movl 0xc(%rdx), %ecx
-
-        # push %rdx, because it will be destroyed
-        # by multiplication and division
-        push %rdx
-
-        # 1. multiplication
-        # rdx:rax = rax * rcx
-        mulq %rcx
-
-        # 2. modulo
-        # rdx = rdx:rax % rcx
-        xorq %rcx, %rcx
-        movl 0xc(%rbx), %ecx
-        divq %rcx
-
-        # store the result
-        movl %edx, 0xc(%rdi)
-
-        # restore %rdx
-        pop %rdx
-
-
         popq %rbx
         ret

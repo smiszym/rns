@@ -9,5 +9,5 @@ void print_rns(struct rns *value)
 
 void fprint_rns(FILE *stream, struct rns *value)
 {
-        fprintf(stream, "%u %u %u %u\n", value->r0, value->r1, value->r2, value->r3);
+        fprintf(stream, "%u %u %u\n", value->r0, value->r1, value->r2);
 }

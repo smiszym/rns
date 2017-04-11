@@ -15,8 +15,8 @@ def invoke_native(num_a, num_b):
     """
     if type(num_a) is list and type(num_b) is list:
         p = Popen(['./rns', \
-            str(num_a[0]), str(num_a[1]), str(num_a[2]), str(num_a[3]),  \
-            str(num_b[0]), str(num_b[1]), str(num_b[2]), str(num_b[3])], \
+            str(num_a[0]), str(num_a[1]), str(num_a[2]),  \
+            str(num_b[0]), str(num_b[1]), str(num_b[2])], \
             stdout=PIPE, stderr=PIPE)
         lines = p.communicate()[0].decode('UTF-8').split('\n')
         return [str_to_rns(s) for s in lines[:-1]]

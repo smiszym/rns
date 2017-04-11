@@ -8,7 +8,7 @@ struct rns {
         uint32_t r0;
         uint32_t r1;
         uint32_t r2;
-        uint32_t r3;
+        uint32_t reserved; // not used; only 3 modules are used
 } __attribute__((packed));
 
 struct int128 {

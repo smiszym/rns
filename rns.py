@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-rns_base = [4294967197, 4294967231, 4294967279, 4294967291]
+rns_base = [0x7fffffff, 0x80000000, 0x80000001]
 
 M = 1
 for m in rns_base:
