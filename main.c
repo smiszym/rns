@@ -59,8 +59,10 @@ int main(int argc, char **argv)
                         return 1;
                 }
 
-                fprintf(stderr, "%s in binary form: %08x%08x%08x%08x\n", argv[1], value.x3, value.x2, value.x1, value.x0);
                 fprintf(stderr, "%s in binary form: %08x/%08x/%08x/%08x\n", argv[1], value.x3, value.x2, value.x1, value.x0);
+
+                int_to_rns(&rns_a, &value);
+                fprint_rns(stdout, &rns_a);
         } else if (argc == 3) {
                 fprintf(stderr, "Reading two decimal numbers: %s and %s\n", argv[1], argv[2]);
         } else if (argc == 7) {
