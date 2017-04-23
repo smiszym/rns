@@ -23,6 +23,9 @@ rns_sub.o: rns_sub.s rns.h
 rns_mul.o: rns_mul.s rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
+add_int128.o: add_int128.s rns.h
+	gcc ${CFLAGS} -c -o $@ $<
+
 copy_int128.o: copy_int128.s rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
@@ -35,7 +38,7 @@ read_int128.o: read_int128.s rns.h
 int_to_rns.o: int_to_rns.s rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
-rns: main.o rns_env.o rns_add.o rns_sub.o rns_mul.o copy_int128.o shl_int128.o read_int128.o int_to_rns.o utils.o
+rns: main.o rns_env.o rns_add.o rns_sub.o rns_mul.o add_int128.o copy_int128.o shl_int128.o read_int128.o int_to_rns.o utils.o
 	gcc ${CFLAGS} -o $@ $^
 
 clean:

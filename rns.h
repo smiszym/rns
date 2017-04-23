@@ -35,6 +35,7 @@ void rns_mul(struct rns *result, struct rns *a, struct rns *b);
 int read_int128(struct int128 *result, const char *s);
 
 void copy_int128(struct int128 *dest, const struct int128 *src);
+void add_int128(struct int128 *dest, const struct int128 *src);
 
 // Shifts the number in place
 void shl_int128(struct int128 *result, int n);
