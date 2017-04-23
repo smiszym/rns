@@ -1,5 +1,6 @@
 __pycache__
 *.o
+*.tar.bz2
 /rns
 
 /work.config

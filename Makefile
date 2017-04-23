@@ -1,9 +1,11 @@
 CFLAGS += -Wall
 CFLAGS += -g
 
-.PHONY: all clean
+.PHONY: all default clean
 
-all: rns
+default: rns
+
+all: rns_MichalSzymanski.tar.bz2
 
 main.o: main.c rns.h
 	gcc ${CFLAGS} -c -o $@ $<
@@ -40,6 +42,13 @@ int_to_rns.o: int_to_rns.s rns.h
 
 rns: main.o rns_env.o rns_add.o rns_sub.o rns_mul.o add_int128.o copy_int128.o shl_int128.o read_int128.o int_to_rns.o utils.o
 	gcc ${CFLAGS} -o $@ $^
+
+rns_MichalSzymanski.tar.bz2: rns
+	rm -rf rns_MichalSzymanski
+	mkdir rns_MichalSzymanski
+	cp -t rns_MichalSzymanski *.h *.c *.s *.py Makefile README
+	tar cvjf rns_MichalSzymanski.tar.bz2 rns_MichalSzymanski
+	rm -rf rns_MichalSzymanski
 
 clean:
 	rm -rf *.o rns __pycache__
