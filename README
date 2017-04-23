@@ -11,7 +11,7 @@ Files in this directory:
  Assembler implementation:
    rns.h -- header file for RNS implementation
    rns_env.s, rns_add.s, rns_sub.s, rns_mul.s -- implementation of RNS system in Assembler
-   read_int128.s, add_int128.s, copy_int128.s, shl_int128.s -- implementation of 128-bit number arithmetic
+   read_int128.s, add_int128.s, load_int128.s, copy_int128.s, shl_int128.s -- implementation of 128-bit number arithmetic
    int_to_rns.s -- implementation of conversion form natural binary to RNS form
    main.c -- main program doing computations in RNS using Assembler library
    utils.c -- utility functions, called from main program

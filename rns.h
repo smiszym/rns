@@ -34,6 +34,9 @@ void rns_mul(struct rns *result, struct rns *a, struct rns *b);
  */
 int read_int128(struct int128 *result, const char *s);
 
+// Loads 32-bit integer into a 128-bit variable
+void load_int128(struct int128 *dest, uint32_t number);
+
 void copy_int128(struct int128 *dest, const struct int128 *src);
 void add_int128(struct int128 *dest, const struct int128 *src);
 
