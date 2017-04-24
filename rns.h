@@ -40,6 +40,12 @@ void load_r0_to_int128(struct int128 *dest, const struct rns *src);
 void load_r1_to_int128(struct int128 *dest, const struct rns *src);
 void load_r2_to_int128(struct int128 *dest, const struct rns *src);
 
+// Adds a 32-bit integer, one of the RNS remainders,
+// to a 128-bit variable
+void add_r0_to_int128(struct int128 *dest, const struct rns *src);
+void add_r1_to_int128(struct int128 *dest, const struct rns *src);
+void add_r2_to_int128(struct int128 *dest, const struct rns *src);
+
 void copy_int128(struct int128 *dest, const struct int128 *src);
 void add_int128(struct int128 *dest, const struct int128 *src);
 void sub_int128(struct int128 *dest, const struct int128 *src);
