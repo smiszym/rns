@@ -39,6 +39,7 @@ void load_int128(struct int128 *dest, uint32_t number);
 
 void copy_int128(struct int128 *dest, const struct int128 *src);
 void add_int128(struct int128 *dest, const struct int128 *src);
+void sub_int128(struct int128 *dest, const struct int128 *src);
 
 // Shifts the number in place
 void shl_int128(struct int128 *result, int n);

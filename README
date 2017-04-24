@@ -13,7 +13,7 @@ Files in this directory:
      -- header file for RNS implementation
    rns_env.s, rns_add.s, rns_sub.s, rns_mul.s
      -- implementation of RNS system in Assembler
-   read_int128.s, add_int128.s, load_int128.s, copy_int128.s,
+   read_int128.s, add_int128.s, sub_int128.s, load_int128.s, copy_int128.s,
    shl_int128.s
      -- implementation of 128-bit number arithmetic
    int_to_rns.s
