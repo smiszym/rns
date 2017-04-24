@@ -30,6 +30,39 @@ static void rns_init()
         }
 }
 
+static struct int128 value_a;
+static struct int128 value_b;
+static struct rns rns_a;
+static struct rns rns_b;
+static struct rns rns_sum;
+static struct rns rns_diff;
+static struct rns rns_prod;
+
+static void perform_actual_computations()
+{
+        rns_add(&rns_sum, &rns_a, &rns_b);
+        rns_sub(&rns_diff, &rns_a, &rns_b);
+        rns_mul(&rns_prod, &rns_a, &rns_b);
+}
+
+static void print_operations_results()
+{
+        /* Human-readable: stderr */
+        fprintf(stderr, "Sum: ");
+        fprint_rns(stderr, &rns_sum);
+
+        fprintf(stderr, "Difference: ");
+        fprint_rns(stderr, &rns_diff);
+
+        fprintf(stderr, "Product: ");
+        fprint_rns(stderr, &rns_prod);
+
+        /* Computer-readable: stdout */
+        fprint_rns(stdout, &rns_sum);
+        fprint_rns(stdout, &rns_diff);
+        fprint_rns(stdout, &rns_prod);
+}
+
 int main(int argc, char **argv)
 {
         rns_init();
@@ -42,14 +75,6 @@ int main(int argc, char **argv)
                 fprintf(stderr, "Error: sizeof(struct int128) != 16 B\nExiting.");
                 return 1;
         }
-
-        struct int128 value_a;
-        struct int128 value_b;
-        struct rns rns_a;
-        struct rns rns_b;
-        struct rns rns_sum;
-        struct rns rns_diff;
-        struct rns rns_prod;
 
         if (argc == 2) {
                 fprintf(stderr, "Read a decimal number %s.\n", argv[1]);
@@ -72,6 +97,31 @@ int main(int argc, char **argv)
                 fprint_int128(stderr, &value_b);
         } else if (argc == 3) {
                 fprintf(stderr, "Reading two decimal numbers: %s and %s\n", argv[1], argv[2]);
+
+                if (read_int128(&value_a, argv[1])) {
+                        fprintf(stderr, "Error while converting `%s` to binary\n", argv[1]);
+                        return 1;
+                }
+
+                if (read_int128(&value_b, argv[2])) {
+                        fprintf(stderr, "Error while converting `%s` to binary\n", argv[2]);
+                        return 1;
+                }
+
+                fprintf(stderr, "In a binary form: ");
+                fprint_int128(stderr, &value_a);
+                fprintf(stderr, "                  ");
+                fprint_int128(stderr, &value_b);
+
+                int_to_rns(&rns_a, &value_a);
+                int_to_rns(&rns_b, &value_b);
+                fprintf(stderr, "The RNS representations are: ");
+                fprint_rns(stderr, &rns_a);
+                fprintf(stderr, "                             ");
+                fprint_rns(stderr, &rns_b);
+
+                perform_actual_computations();
+                print_operations_results();
         } else if (argc == 7) {
                 fprintf(stderr, "Reading two numbers in RNS notation\n");
 
@@ -83,30 +133,12 @@ int main(int argc, char **argv)
                 sscanf(argv[5], "%ul", &rns_b.r1);
                 sscanf(argv[6], "%ul", &rns_b.r2);
 
-                /* Actual operations */
-                rns_add(&rns_sum, &rns_a, &rns_b);
-                rns_sub(&rns_diff, &rns_a, &rns_b);
-                rns_mul(&rns_prod, &rns_a, &rns_b);
-
-                /* Human-readable: stderr */
                 fprintf(stderr, "The two numbers are:\n");
                 fprint_rns(stderr, &rns_a);
                 fprint_rns(stderr, &rns_b);
 
-                fprintf(stderr, "Sum: ");
-                fprint_rns(stderr, &rns_sum);
-
-                fprintf(stderr, "Difference: ");
-                fprint_rns(stderr, &rns_diff);
-
-                fprintf(stderr, "Product: ");
-                fprint_rns(stderr, &rns_prod);
-
-                /* Computer-readable: stdout */
-                fprint_rns(stdout, &rns_sum);
-                fprint_rns(stdout, &rns_diff);
-                fprint_rns(stdout, &rns_prod);
-
+                perform_actual_computations();
+                print_operations_results();
         } else {
                 fprintf(stderr, "Unknown mode of operation\n%s", usage);
                 return 1;
