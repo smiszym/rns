@@ -59,7 +59,8 @@ int main(int argc, char **argv)
                         return 1;
                 }
 
-                fprintf(stderr, "In a binary form: %08x/%08x/%08x/%08x\n", value_a.x3, value_a.x2, value_a.x1, value_a.x0);
+                fprintf(stderr, "In a binary form: ");
+                fprint_int128(stderr, &value_a);
 
                 int_to_rns(&rns_a, &value_a);
                 fprintf(stderr, "The RNS representation is: ");
@@ -67,8 +68,8 @@ int main(int argc, char **argv)
                 fprint_rns(stdout, &rns_a);
 
                 rns_to_int(&value_b, &rns_a);
-                fprintf(stderr, "The value converted back: %08x/%08x/%08x/%08x\n",
-                        value_b.x3, value_b.x2, value_b.x1, value_b.x0);
+                fprintf(stderr, "The value converted back: ");
+                fprint_int128(stderr, &value_b);
         } else if (argc == 3) {
                 fprintf(stderr, "Reading two decimal numbers: %s and %s\n", argv[1], argv[2]);
         } else if (argc == 7) {

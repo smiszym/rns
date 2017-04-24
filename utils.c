@@ -12,6 +12,17 @@ void fprint_rns(FILE *stream, struct rns *value)
         fprintf(stream, "%u %u %u\n", value->r0, value->r1, value->r2);
 }
 
+void print_int128(struct int128 *value)
+{
+        fprint_int128(stdout, value);
+}
+
+void fprint_int128(FILE *stream, struct int128 *value)
+{
+        fprintf(stream, "%08x/%08x/%08x/%08x\n",
+                        value->x3, value->x2, value->x1, value->x0);
+}
+
 void rns_to_int(struct int128 *dest, const struct rns *src)
 {
         struct int128 tmp;

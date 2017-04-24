@@ -60,5 +60,7 @@ void rns_to_int(struct int128 *dest, const struct rns *src);
 
 void print_rns(struct rns *value);
 void fprint_rns(FILE *stream, struct rns *value);
+void print_int128(struct int128 *value);
+void fprint_int128(FILE *stream, struct int128 *value);
 
 #endif
