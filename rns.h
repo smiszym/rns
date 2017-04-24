@@ -41,7 +41,9 @@ void copy_int128(struct int128 *dest, const struct int128 *src);
 void add_int128(struct int128 *dest, const struct int128 *src);
 void sub_int128(struct int128 *dest, const struct int128 *src);
 
-// Shifts the number in place
+// Shifts the number in place. Only least significant byte of n is taken
+// into account. This is to free the programmer from the need to
+// zero out the rest of the argument register.
 void shl_int128(struct int128 *result, int n);
 
 void int_to_rns(struct rns *result, struct int128 *value);

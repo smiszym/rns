@@ -18,6 +18,7 @@ shift_bytes:
 shl_int128:
         # %rdi - int128 address
         # %rsi - number of shifts
+        andq $0xff, %rsi # only take one byte into account
         cmp $32, %rsi
         jge shift_bytes
 
