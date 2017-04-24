@@ -43,6 +43,8 @@ int main(int argc, char **argv)
                 return 1;
         }
 
+        struct int128 value_a;
+        struct int128 value_b;
         struct rns rns_a;
         struct rns rns_b;
         struct rns rns_sum;
@@ -52,25 +54,21 @@ int main(int argc, char **argv)
         if (argc == 2) {
                 fprintf(stderr, "Read a decimal number %s.\n", argv[1]);
 
-                struct int128 value;
-                struct int128 value_converted_back;
-
-                if (read_int128(&value, argv[1])) {
+                if (read_int128(&value_a, argv[1])) {
                         fprintf(stderr, "Error while converting `%s` to binary\n", argv[1]);
                         return 1;
                 }
 
-                fprintf(stderr, "In a binary form: %08x/%08x/%08x/%08x\n", value.x3, value.x2, value.x1, value.x0);
+                fprintf(stderr, "In a binary form: %08x/%08x/%08x/%08x\n", value_a.x3, value_a.x2, value_a.x1, value_a.x0);
 
-                int_to_rns(&rns_a, &value);
+                int_to_rns(&rns_a, &value_a);
                 fprintf(stderr, "The RNS representation is: ");
                 fprint_rns(stderr, &rns_a);
                 fprint_rns(stdout, &rns_a);
 
-                rns_to_int(&value_converted_back, &rns_a);
+                rns_to_int(&value_b, &rns_a);
                 fprintf(stderr, "The value converted back: %08x/%08x/%08x/%08x\n",
-                        value_converted_back.x3, value_converted_back.x2,
-                        value_converted_back.x1, value_converted_back.x0);
+                        value_b.x3, value_b.x2, value_b.x1, value_b.x0);
         } else if (argc == 3) {
                 fprintf(stderr, "Reading two decimal numbers: %s and %s\n", argv[1], argv[2]);
         } else if (argc == 7) {
