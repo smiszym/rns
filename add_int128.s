@@ -8,11 +8,11 @@ add_int128:
         # %rdi - dest address
         # %rsi - src address
 
-        movq $128, %rcx
+        movq $16, %rcx
         clc
 calculating:
-        movb (%rsi), %al
-        movb (%rdi), %dl
+        movb (%rsi), %dl
+        movb (%rdi), %al
         adc %dl, %al
         movb %al, (%rdi)
         inc %rsi
