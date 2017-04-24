@@ -20,9 +20,6 @@ struct int128 {
 
 extern struct rns rns_base;
 
-// Init RNS base to the project default
-void rns_init();
-
 int modulo_inverse(int a, int n);
 
 void rns_add(struct rns *result, struct rns *a, struct rns *b);

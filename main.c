@@ -19,7 +19,7 @@ const char *wrong_rns_base_msg =
 "(This is a bug in the program code: %s:%d)\n"
 "Aborting.";
 
-void rns_init()
+static void rns_init()
 {
         // Make sure that we have a correct RNS base
         if (rns_base.r0 != 0x7fffffff
