@@ -50,19 +50,27 @@ int main(int argc, char **argv)
         struct rns rns_prod;
 
         if (argc == 2) {
-                fprintf(stderr, "Reading a decimal number %s\nTrying to convert to binary...\n", argv[1]);
+                fprintf(stderr, "Read a decimal number %s.\n", argv[1]);
 
                 struct int128 value;
+                struct int128 value_converted_back;
 
                 if (read_int128(&value, argv[1])) {
                         fprintf(stderr, "Error while converting `%s` to binary\n", argv[1]);
                         return 1;
                 }
 
-                fprintf(stderr, "%s in binary form: %08x/%08x/%08x/%08x\n", argv[1], value.x3, value.x2, value.x1, value.x0);
+                fprintf(stderr, "In a binary form: %08x/%08x/%08x/%08x\n", value.x3, value.x2, value.x1, value.x0);
 
                 int_to_rns(&rns_a, &value);
+                fprintf(stderr, "The RNS representation is: ");
+                fprint_rns(stderr, &rns_a);
                 fprint_rns(stdout, &rns_a);
+
+                rns_to_int(&value_converted_back, &rns_a);
+                fprintf(stderr, "The value converted back: %08x/%08x/%08x/%08x\n",
+                        value_converted_back.x3, value_converted_back.x2,
+                        value_converted_back.x1, value_converted_back.x0);
         } else if (argc == 3) {
                 fprintf(stderr, "Reading two decimal numbers: %s and %s\n", argv[1], argv[2]);
         } else if (argc == 7) {
