@@ -32,6 +32,14 @@ void rns_mul(struct rns *result, struct rns *a, struct rns *b);
  */
 int read_int128(struct int128 *result, const char *s);
 
+// This function converts a 128-bit number into a decimal
+// representation and stores the result as ASCII null-terminated
+// string.
+//
+// Assumes that the buffer is at least 40 bytes long, in order
+// to be able to store largest 128-bit number decimal representation.
+void int128_to_dec(char *buffer, const struct int128 *number);
+
 // Loads a 32-bit integer, one of the RNS remainders,
 // into a 128-bit variable
 void load_r0_to_int128(struct int128 *dest, const struct rns *src);

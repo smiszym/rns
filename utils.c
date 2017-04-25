@@ -41,3 +41,37 @@ void rns_to_int(struct int128 *dest, const struct rns *src)
         shl_int128(&tmp, 61);
         sub_int128(dest, &tmp);
 }
+
+void int128_to_dec(char *buffer, const struct int128 *number)
+{
+        struct int128 tmp;
+        int remainder;
+        int i = 0;
+        int j = 0;
+        char c;
+
+        copy_int128(&tmp, number);
+
+        if (is_int128_zero(&tmp)) {
+                buffer[0] = '0';
+                buffer[1] = '\0';
+                return;
+        }
+
+        while (!is_int128_zero(&tmp)) {
+                remainder = divide_int128_by_10(&tmp);
+                buffer[i++] = '0' + remainder; // append a digit
+        }
+
+        buffer[i] = '\0';
+
+        // Reverse digit order
+        --i;
+        while (i > j) {
+                c = buffer[i];
+                buffer[i] = buffer[j];
+                buffer[j] = c;
+                --i;
+                ++j;
+        }
+}
