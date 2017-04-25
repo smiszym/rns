@@ -69,24 +69,6 @@ static void perform_actual_computations()
         rns_mul(&rns_prod, &rns_a, &rns_b);
 }
 
-static void print_operations_results()
-{
-        /* Human-readable: stderr */
-        fprintf(stderr, "Sum: ");
-        fprint_rns(stderr, &rns_sum);
-
-        fprintf(stderr, "Difference: ");
-        fprint_rns(stderr, &rns_diff);
-
-        fprintf(stderr, "Product: ");
-        fprint_rns(stderr, &rns_prod);
-
-        /* Computer-readable: stdout */
-        fprint_rns(stdout, &rns_sum);
-        fprint_rns(stdout, &rns_diff);
-        fprint_rns(stdout, &rns_prod);
-}
-
 int main(int argc, char **argv)
 {
         rns_init();
@@ -145,7 +127,19 @@ int main(int argc, char **argv)
                 fprint_rns(stderr, &rns_b);
 
                 perform_actual_computations();
-                print_operations_results();
+
+                fprintf(stderr, "Sum: ");
+                fprint_rns(stderr, &rns_sum);
+
+                fprintf(stderr, "Difference: ");
+                fprint_rns(stderr, &rns_diff);
+
+                fprintf(stderr, "Product: ");
+                fprint_rns(stderr, &rns_prod);
+
+                fprint_rns(stdout, &rns_sum);
+                fprint_rns(stdout, &rns_diff);
+                fprint_rns(stdout, &rns_prod);
         } else if (argc == 7) {
                 fprintf(stderr, "Reading two numbers in RNS notation\n");
 
@@ -162,7 +156,19 @@ int main(int argc, char **argv)
                 fprint_rns(stderr, &rns_b);
 
                 perform_actual_computations();
-                print_operations_results();
+
+                fprintf(stderr, "Sum: ");
+                fprint_rns(stderr, &rns_sum);
+
+                fprintf(stderr, "Difference: ");
+                fprint_rns(stderr, &rns_diff);
+
+                fprintf(stderr, "Product: ");
+                fprint_rns(stderr, &rns_prod);
+
+                fprint_rns(stdout, &rns_sum);
+                fprint_rns(stdout, &rns_diff);
+                fprint_rns(stdout, &rns_prod);
         } else {
                 fprintf(stderr, usage, rns_base.r0, rns_base.r1, rns_base.r2);
                 return 1;
