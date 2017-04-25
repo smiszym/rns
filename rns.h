@@ -1,6 +1,7 @@
 #ifndef RNS_H
 #define RNS_H
 
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -42,6 +43,8 @@ void load_r2_to_int128(struct int128 *dest, const struct rns *src);
 void add_r0_to_int128(struct int128 *dest, const struct rns *src);
 void add_r1_to_int128(struct int128 *dest, const struct rns *src);
 void add_r2_to_int128(struct int128 *dest, const struct rns *src);
+
+bool is_int128_zero(struct int128 *value);
 
 void copy_int128(struct int128 *dest, const struct int128 *src);
 void add_int128(struct int128 *dest, const struct int128 *src);
