@@ -4,15 +4,39 @@
 #include "rns.h"
 
 const char *usage =
+"Copyright (C) Michał Szymański, 2017\n"
+"Projekt w ramach przedmiotu Architektura Komputerów 2\n"
+"Prowadzący: mgr inż. Aleksandra Postawka\n"
+"Politechnika Wrocławska\n"
+"\n"
+"RNS base: [%u %u %u] (decimal)\n"
+"\n"
 "Usage:\n"
 "  ./rns a\n"
-"     Converts a number to RNS form\n\n"
+"     Converts a decimal number to RNS form.\n"
+"     Input:\n"
+"       a - decimal number (max 89-bit)\n"
+"     Output:\n"
+"       the number in RNS form\n"
+"\n"
+"  ./rns a0 a1 a2 b0 b1 b2\n"
+"     Reads two numbers in RNS form and performs operations.\n"
+"     Input:\n"
+"       [a0 a1 a2], [b0 b1 b2] - numbers in RNS notation\n"
+"     Output: \n"
+"       (RNS form) sum\n"
+"       (RNS form) difference\n"
+"       (RNS form) product\n"
+"\n"
 "  ./rns a b\n"
 "     Reads two decimals; performs operations in RNS\n"
-"     and converts back to decimal\n\n"
-"  ./rns a0 a1 a2 b0 b1 b2\n"
-"     Reads two numbers in RNS form and performs\n"
-"     operations\n";
+"     and converts back to decimal.\n"
+"     Input:\n"
+"       a, b - decimal numbers (max 89-bit)\n"
+"     Output: \n"
+"       (decimal)  sum\n"
+"       (decimal)  difference\n"
+"       (decimal)  product\n";
 
 const char *wrong_rns_base_msg =
 "Wrong RNS base initialized\n"
@@ -140,7 +164,7 @@ int main(int argc, char **argv)
                 perform_actual_computations();
                 print_operations_results();
         } else {
-                fprintf(stderr, "Unknown mode of operation\n%s", usage);
+                fprintf(stderr, usage, rns_base.r0, rns_base.r1, rns_base.r2);
                 return 1;
         }
 
