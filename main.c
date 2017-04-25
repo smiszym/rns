@@ -62,6 +62,8 @@ static struct rns rns_sum;
 static struct rns rns_diff;
 static struct rns rns_prod;
 
+static char string_buffer[40];
+
 static void perform_actual_computations()
 {
         rns_add(&rns_sum, &rns_a, &rns_b);
@@ -129,19 +131,19 @@ int main(int argc, char **argv)
                 perform_actual_computations();
 
                 rns_to_int(&value_a, &rns_sum);
-                fprintf(stderr, "       Sum: ");
-                fprint_int128(stderr, &value_a);
-                print_int128(&value_a);
+                int128_to_dec(string_buffer, &value_a);
+                fprintf(stderr, "       Sum: %s\n", string_buffer);
+                puts(string_buffer);
 
                 rns_to_int(&value_a, &rns_diff);
-                fprintf(stderr, "Difference: ");
-                fprint_int128(stderr, &value_a);
-                print_int128(&value_a);
+                int128_to_dec(string_buffer, &value_a);
+                fprintf(stderr, "Difference: %s\n", string_buffer);
+                puts(string_buffer);
 
                 rns_to_int(&value_a, &rns_prod);
-                fprintf(stderr, "   Product: ");
-                fprint_int128(stderr, &value_a);
-                print_int128(&value_a);
+                int128_to_dec(string_buffer, &value_a);
+                fprintf(stderr, "   Product: %s\n", string_buffer);
+                puts(string_buffer);
         } else if (argc == 7) {
                 fprintf(stderr, "Reading two numbers in RNS notation\n");
 
