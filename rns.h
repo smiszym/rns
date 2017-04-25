@@ -50,6 +50,10 @@ void copy_int128(struct int128 *dest, const struct int128 *src);
 void add_int128(struct int128 *dest, const struct int128 *src);
 void sub_int128(struct int128 *dest, const struct int128 *src);
 
+// The function stores the quotient in value
+// and returns the remainder.
+int divide_int128_by_10(struct int128 *value);
+
 // Shifts the number in place. Only least significant byte of n is taken
 // into account. This is to free the programmer from the need to
 // zero out the rest of the argument register.
