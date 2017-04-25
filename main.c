@@ -128,18 +128,20 @@ int main(int argc, char **argv)
 
                 perform_actual_computations();
 
-                fprintf(stderr, "Sum: ");
-                fprint_rns(stderr, &rns_sum);
+                rns_to_int(&value_a, &rns_sum);
+                fprintf(stderr, "       Sum: ");
+                fprint_int128(stderr, &value_a);
+                print_int128(&value_a);
 
+                rns_to_int(&value_a, &rns_diff);
                 fprintf(stderr, "Difference: ");
-                fprint_rns(stderr, &rns_diff);
+                fprint_int128(stderr, &value_a);
+                print_int128(&value_a);
 
-                fprintf(stderr, "Product: ");
-                fprint_rns(stderr, &rns_prod);
-
-                fprint_rns(stdout, &rns_sum);
-                fprint_rns(stdout, &rns_diff);
-                fprint_rns(stdout, &rns_prod);
+                rns_to_int(&value_a, &rns_prod);
+                fprintf(stderr, "   Product: ");
+                fprint_int128(stderr, &value_a);
+                print_int128(&value_a);
         } else if (argc == 7) {
                 fprintf(stderr, "Reading two numbers in RNS notation\n");
 
