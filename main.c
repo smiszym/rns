@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "rns.h"
 
@@ -101,8 +102,15 @@ int main(int argc, char **argv)
                 fprint_rns(stdout, &rns_a);
 
                 rns_to_int(&value_b, &rns_a);
-                fprintf(stderr, "The value converted back: ");
-                fprint_int128(stderr, &value_b);
+                int128_to_dec(string_buffer, &value_b);
+                fprintf(stderr, "The value converted back: %s\n", string_buffer);
+
+                // Sanity check
+                if (strcmp(string_buffer, argv[1])) {
+                        fprintf(stderr, "ERROR: Decimal representation is different from original\n");
+                        fprintf(stderr, "       Binary representation after reverse conversion: ");
+                        fprint_int128(stderr, &value_b);
+                }
         } else if (argc == 3) {
                 fprintf(stderr, "Reading two decimal numbers: %s and %s\n", argv[1], argv[2]);
 
