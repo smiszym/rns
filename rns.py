@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
 
-rns_base = [0x7fffffff, 0x80000000, 0x80000001]
-
-M = 1
-for m in rns_base:
-    M *= m
-
-# Only used in rns to int conversion
-alt_base = [M // rns_base[i] for i in range(len(rns_base))]
-
 def modulo_inverse(a, n):
     u = 1
     w = a
@@ -25,6 +16,14 @@ def modulo_inverse(a, n):
         if x < 0:
             x += n
         return x
+
+rns_base = [0x7fffffff, 0x80000000, 0x80000001]
+
+M = 1
+for m in rns_base:
+    M *= m
+
+alt_base = [M // rns_base[i] for i in range(len(rns_base))]
 
 def rns_add(a, b):
     return [((a[i]+b[i]) % rns_base[i]) for i in range(len(rns_base))]
