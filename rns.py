@@ -24,6 +24,7 @@ for m in rns_base:
     M *= m
 
 alt_base = [M // rns_base[i] for i in range(len(rns_base))]
+residual_ones = [alt_base[i] * modulo_inverse(alt_base[i], rns_base[i]) for i in range(len(rns_base))]
 
 def rns_add(a, b):
     return [((a[i]+b[i]) % rns_base[i]) for i in range(len(rns_base))]
@@ -38,7 +39,7 @@ def int_to_rns(n):
     return [(n % q) for q in rns_base]
 
 def rns_to_int(n):
-    return sum([alt_base[i] * modulo_inverse(alt_base[i], rns_base[i]) * n[i] for i in range(len(rns_base))]) % M
+    return sum([residual_ones[i] * n[i] for i in range(len(rns_base))]) % M
 
 def test_rns(a, b):
     a_rns = int_to_rns(a)
