@@ -33,7 +33,7 @@ add_r2_to_int128:
         # passthrough
 add_r_to_int128:
         # %rdi - dest address
-        # %rsi - struct rns, from which to load
+        # %rsi - struct rns, from which to add
         xorl %edx, %edx
         addl %eax, 0x0(%rdi)
         adcl %edx, 0x4(%rdi)

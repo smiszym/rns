@@ -52,6 +52,12 @@ void add_r0_to_int128(struct int128 *dest, const struct rns *src);
 void add_r1_to_int128(struct int128 *dest, const struct rns *src);
 void add_r2_to_int128(struct int128 *dest, const struct rns *src);
 
+// Subtracts a 32-bit integer, one of the RNS remainders,
+// from a 128-bit variable
+void sub_r0_from_int128(struct int128 *dest, const struct rns *src);
+void sub_r1_from_int128(struct int128 *dest, const struct rns *src);
+void sub_r2_from_int128(struct int128 *dest, const struct rns *src);
+
 bool is_int128_zero(struct int128 *value);
 
 void copy_int128(struct int128 *dest, const struct int128 *src);
