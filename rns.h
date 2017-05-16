@@ -68,6 +68,10 @@ void sub_int128(struct int128 *dest, const struct int128 *src);
 // and returns the remainder.
 int divide_int128_by_10(struct int128 *value);
 
+// The function calculates the remainder in division value by M
+// and stores the result back in value.
+void int128_mod_M(struct int128 *value);
+
 // Shifts the number in place. Only least significant byte of n is taken
 // into account. This is to free the programmer from the need to
 // zero out the rest of the argument register.
