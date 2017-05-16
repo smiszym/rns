@@ -14,6 +14,7 @@ def invoke_native(num_a, num_b=None):
     or Python integers.
     """
     if type(num_a) is list and type(num_b) is list:
+        # ./rns a0 a1 a2 b0 b1 b2
         p = Popen(['./rns', \
             str(num_a[0]), str(num_a[1]), str(num_a[2]),  \
             str(num_b[0]), str(num_b[1]), str(num_b[2])], \
@@ -21,12 +22,14 @@ def invoke_native(num_a, num_b=None):
         lines = p.communicate()[0].decode('UTF-8').split('\n')
         return [str_to_rns(s) for s in lines[:-1]]
     if type(num_a) is int and type(num_b) is int:
+        # ./rns a b
         p = Popen(['./rns', \
             str(num_a), str(num_b)], \
             stdout=PIPE, stderr=PIPE)
         lines = p.communicate()[0].decode('UTF-8').split('\n')
         return [int(s) for s in lines[:-1]]
     if type(num_a) is int and num_b is None:
+        # ./rns a
         p = Popen(['./rns', \
             str(num_a)], \
             stdout=PIPE, stderr=PIPE)
