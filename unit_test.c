@@ -20,7 +20,15 @@ static const char *usage =
 "     Input:\n"
 "       n - a decimal number in range <0, 2^89>\n"
 "     Output:\n"
-"       the same number, after conversion to int128 and back\n";
+"       the same number, after conversion to int128 and back\n"
+"\n"
+"  ./rns test modulo <n>\n"
+"     Input:\n"
+"       n - a decimal number in range <0, 2^89>\n"
+"     Output:\n"
+"       n modulo M\n"
+"     where\n"
+"       M - the product of RNS bases\n";
 
 int unit_testing(int argc, char **argv)
 {
@@ -42,6 +50,21 @@ int unit_testing(int argc, char **argv)
                 fprintf(stderr, "The value converted back: %s\n", string_buffer);
 
                 puts(string_buffer);
+        } else if (argc == 4 && !strcmp(argv[2], "modulo")) {
+                fprintf(stderr, "Read a decimal number %s.\n", argv[3]);
+
+                if (read_int128(&value_a, argv[3])) {
+                        fprintf(stderr, "Error while converting `%s` to binary\n", argv[1]);
+                        return 1;
+                }
+
+                fprintf(stderr, "In a binary form: ");
+                fprint_int128(stderr, &value_a);
+
+                int128_mod_M(&value_a);
+
+                int128_to_dec(string_buffer, &value_a);
+                fprintf(stderr, "The value modulo M: %s\n", string_buffer);
         } else {
                 fprintf(stderr, usage, argv[0]);
         }
