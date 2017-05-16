@@ -58,6 +58,8 @@ void sub_r0_from_int128(struct int128 *dest, const struct rns *src);
 void sub_r1_from_int128(struct int128 *dest, const struct rns *src);
 void sub_r2_from_int128(struct int128 *dest, const struct rns *src);
 
+int cmp_int128(struct int128 *a, const struct int128 *b);
+
 bool is_int128_zero(struct int128 *value);
 
 void copy_int128(struct int128 *dest, const struct int128 *src);
