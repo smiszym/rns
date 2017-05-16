@@ -15,11 +15,12 @@ static const char *usage =
 "\n"
 "Usage:\n"
 "  ./rns a\n"
-"     Converts a decimal number to RNS form.\n"
+"     Converts a decimal number to RNS form and back to decimal.\n"
 "     Input:\n"
 "       a - decimal number (max 89-bit)\n"
 "     Output:\n"
 "       the number in RNS form\n"
+"       the number after reverse conversion from RNS form (should be the same)\n"
 "\n"
 "  ./rns a0 a1 a2 b0 b1 b2\n"
 "     Reads two numbers in RNS form and performs operations.\n"
@@ -113,6 +114,7 @@ int main(int argc, char **argv)
                 rns_to_int(&value_b, &rns_a);
                 int128_to_dec(string_buffer, &value_b);
                 fprintf(stderr, "The value converted back: %s\n", string_buffer);
+                puts(string_buffer);
 
                 // Sanity check
                 if (strcmp(string_buffer, argv[1])) {

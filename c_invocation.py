@@ -34,7 +34,7 @@ def invoke_native(num_a, num_b=None):
             str(num_a)], \
             stdout=PIPE, stderr=PIPE)
         lines = p.communicate()[0].decode('UTF-8').split('\n')
-        return str_to_rns(lines[0])
+        return [str_to_rns(lines[0]), int(lines[1])]
 
 
 if __name__ == "__main__":

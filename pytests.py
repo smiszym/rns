@@ -124,11 +124,12 @@ class TestNativeProgram(unittest.TestCase):
             a_rns = int_to_rns(a)
             b_rns = int_to_rns(b)
 
-            a_rns_native = invoke_native(a)
+            a_rns_native, a_dec_native = invoke_native(a)
             sum_native_rns, diff_native_rns, prod_native_rns = invoke_native(a_rns, b_rns)
             sum_native_dec, diff_native_dec, prod_native_dec = invoke_native(a, b)
 
             self.assertListEqual(a_rns, a_rns_native)
+            self.assertEqual(a, a_dec_native)
             self.assertListEqual(rns_add(a_rns, b_rns), sum_native_rns)
             self.assertListEqual(rns_sub(a_rns, b_rns), diff_native_rns)
             self.assertListEqual(rns_mul(a_rns, b_rns), prod_native_rns)
