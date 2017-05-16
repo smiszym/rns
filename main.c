@@ -106,7 +106,10 @@ int main(int argc, char **argv)
                 fprintf(stderr, "In a binary form: ");
                 fprint_int128(stderr, &value_a);
 
-                int_to_rns(&rns_a, &value_a);
+                if (int_to_rns(&rns_a, &value_a)) {
+                        fprintf(stderr, "ERROR: Argument out of bounds.\n");
+                        return 1;
+                }
                 fprintf(stderr, "The RNS representation is: ");
                 fprint_rns(stderr, &rns_a);
                 fprint_rns(stdout, &rns_a);
@@ -140,8 +143,14 @@ int main(int argc, char **argv)
                 fprintf(stderr, "                  ");
                 fprint_int128(stderr, &value_b);
 
-                int_to_rns(&rns_a, &value_a);
-                int_to_rns(&rns_b, &value_b);
+                if (int_to_rns(&rns_a, &value_a)) {
+                        fprintf(stderr, "ERROR: Argument a out of bounds.\n");
+                        return 1;
+                }
+                if (int_to_rns(&rns_b, &value_b)) {
+                        fprintf(stderr, "ERROR: Argument b out of bounds.\n");
+                        return 1;
+                }
                 fprintf(stderr, "The RNS representations are: ");
                 fprint_rns(stderr, &rns_a);
                 fprintf(stderr, "                             ");

@@ -80,7 +80,7 @@ void int128_mod_M(struct int128 *value);
 // zero out the rest of the argument register.
 void shl_int128(struct int128 *result, int n);
 
-void int_to_rns(struct rns *result, struct int128 *value);
+int int_to_rns(struct rns *result, struct int128 *value);
 void rns_to_int(struct int128 *dest, const struct rns *src);
 
 

@@ -27,6 +27,14 @@ int_to_rns:
         pushq %rbx
         movq $rns_base, %rbx
 
+        # Check if the value is in bounds
+        pushq %rdi
+        movq $M, %rdi
+        call cmp_int128
+        cmpq $0, %rax
+        popq %rdi
+        jle out_of_bounds
+
         # === Calculate %r8 and %r9 ===
         xorq %rax, %rax
         xorq %rdx, %rdx
@@ -95,7 +103,7 @@ finished:
         popq %rbx
         xorq %rax, %rax
         ret
-error:
+out_of_bounds:
         # Argument's value too big
         popq %rbx
         movq $1, %rax
