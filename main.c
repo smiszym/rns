@@ -3,8 +3,9 @@
 #include <string.h>
 
 #include "rns.h"
+#include "unit_test.h"
 
-const char *usage =
+static const char *usage =
 "Copyright (C) Michał Szymański, 2017\n"
 "Projekt w ramach przedmiotu Architektura Komputerów 2\n"
 "Prowadzący: mgr inż. Aleksandra Postawka\n"
@@ -37,9 +38,13 @@ const char *usage =
 "     Output: \n"
 "       (decimal)  sum\n"
 "       (decimal)  difference\n"
-"       (decimal)  product\n";
+"       (decimal)  product\n"
+"\n"
+"  ./rns test\n"
+"     Prints information on how to invoke the program\n"
+"     for unit testing.\n";
 
-const char *wrong_rns_base_msg =
+static const char *wrong_rns_base_msg =
 "Wrong RNS base initialized\n"
 "(This is a bug in the program code: %s:%d)\n"
 "Aborting.";
@@ -83,6 +88,10 @@ int main(int argc, char **argv)
         if (sizeof(struct int128) != 16) {
                 fprintf(stderr, "Error: sizeof(struct int128) != 16 B\nExiting.");
                 return 1;
+        }
+
+        if (argc >= 2 && !strcmp(argv[1], "test")) {
+                return unit_testing(argc, argv);
         }
 
         if (argc == 2) {
