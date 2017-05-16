@@ -86,13 +86,7 @@ void int128_to_dec(char *buffer, const struct int128 *number)
 void int128_mod_M(struct int128 *value)
 {
         struct int128 tmp;
-        struct int128 M;
         int i;
-
-        M.x3 = 0x00000000;
-        M.x2 = 0x1fffffff;
-        M.x1 = 0xffffffff;
-        M.x0 = 0x80000000;
 
         for (i = 35; i >= 0; --i) {
                 tmp = M;

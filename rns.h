@@ -20,6 +20,7 @@ struct int128 {
 } __attribute__((packed));
 
 extern struct rns rns_base;
+extern struct int128 M;
 
 int modulo_inverse(int a, int n);
 
