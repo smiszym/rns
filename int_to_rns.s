@@ -70,8 +70,6 @@ int_to_rns:
 
 
 
-        # TODO  VERIFY ABOVE
-
         # === r0 ===
         movq %r8, %rax
         addq %r9, %rax
