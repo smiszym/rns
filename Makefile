@@ -27,9 +27,9 @@ INT128_LIB_OBJECTS += sub_int128.o
 INT128_LIB_OBJECTS += cmp_int128.o
 INT128_LIB_OBJECTS += divide_int128_by_10.o
 INT128_LIB_OBJECTS += int128_mod_M.o
+INT128_LIB_OBJECTS += int128_to_dec.o
 INT128_LIB_OBJECTS += load_int128.o
 INT128_LIB_OBJECTS += is_int128_zero.o
-INT128_LIB_OBJECTS += copy_int128.o
 INT128_LIB_OBJECTS += shl_int128.o
 INT128_LIB_OBJECTS += read_int128.o
 
