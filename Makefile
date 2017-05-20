@@ -1,6 +1,8 @@
 CFLAGS += -Wall
 CFLAGS += -g
 
+ASFLAGS += -g
+
 .PHONY: all default clean
 
 default: rns
@@ -41,7 +43,7 @@ utils.o: utils.c ${HEADERS}
 	gcc ${CFLAGS} -c -o $@ $<
 
 %.o: %.s ${HEADERS}
-	gcc ${CFLAGS} -c -o $@ $<
+	as ${ASFLAGS} -c -o $@ $<
 
 rns: ${RNS_LIB_OBJECTS} ${INT128_LIB_OBJECTS}
 	gcc ${CFLAGS} -o $@ $^
