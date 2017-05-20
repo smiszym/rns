@@ -23,32 +23,6 @@ void fprint_int128(FILE *stream, struct int128 *value)
                         value->x3, value->x2, value->x1, value->x0);
 }
 
-void rns_to_int(struct int128 *dest, const struct rns *src)
-{
-        load_r1_to_int128(dest, src);
-        shl_int128(dest, 1);
-
-        add_r0_to_int128(dest, src);
-        add_r2_to_int128(dest, src);
-        shl_int128(dest, 30);
-
-        sub_r1_from_int128(dest, src);
-        add_r2_to_int128(dest, src);
-        shl_int128(dest, 1);
-
-        add_r0_to_int128(dest, src);
-        sub_r2_from_int128(dest, src);
-        shl_int128(dest, 30);
-
-        sub_r1_from_int128(dest, src);
-        sub_r2_from_int128(dest, src);
-        shl_int128(dest, 31);
-
-        add_r1_to_int128(dest, src);
-
-        int128_mod_M(dest);
-}
-
 void int128_to_dec(char *buffer, const struct int128 *number)
 {
         struct int128 tmp;

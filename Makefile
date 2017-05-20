@@ -17,6 +17,7 @@ RNS_LIB_OBJECTS += rns_add.o
 RNS_LIB_OBJECTS += rns_sub.o
 RNS_LIB_OBJECTS += rns_mul.o
 RNS_LIB_OBJECTS += int_to_rns.o
+RNS_LIB_OBJECTS += rns_to_int.o
 RNS_LIB_OBJECTS += utils.o
 
 INT128_LIB_OBJECTS += add_int128.o
@@ -82,6 +83,9 @@ read_int128.o: read_int128.s rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
 int_to_rns.o: int_to_rns.s rns.h
+	gcc ${CFLAGS} -c -o $@ $<
+
+rns_to_int.o: rns_to_int.s rns.h
 	gcc ${CFLAGS} -c -o $@ $<
 
 rns: ${RNS_LIB_OBJECTS} ${INT128_LIB_OBJECTS}
