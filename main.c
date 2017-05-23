@@ -53,9 +53,9 @@ static const char *wrong_rns_base_msg =
 static void rns_init()
 {
         // Make sure that we have a correct RNS base
-        if (rns_base.r0 != 0x7fffffff
-         || rns_base.r1 != 0x80000000
-         || rns_base.r2 != 0x80000001) {
+        if (rns_base.r1 != 0x7fffffff
+         || rns_base.r2 != 0x80000000
+         || rns_base.r3 != 0x80000001) {
                 fprintf(stderr, wrong_rns_base_msg, __FILE__, __LINE__);
                 exit(1);
         }
@@ -175,13 +175,13 @@ int main(int argc, char **argv)
         } else if (argc == 7) {
                 fprintf(stderr, "Reading two numbers in RNS notation\n");
 
-                sscanf(argv[1], "%ul", &rns_a.r0);
-                sscanf(argv[2], "%ul", &rns_a.r1);
-                sscanf(argv[3], "%ul", &rns_a.r2);
+                sscanf(argv[1], "%ul", &rns_a.r1);
+                sscanf(argv[2], "%ul", &rns_a.r2);
+                sscanf(argv[3], "%ul", &rns_a.r3);
 
-                sscanf(argv[4], "%ul", &rns_b.r0);
-                sscanf(argv[5], "%ul", &rns_b.r1);
-                sscanf(argv[6], "%ul", &rns_b.r2);
+                sscanf(argv[4], "%ul", &rns_b.r1);
+                sscanf(argv[5], "%ul", &rns_b.r2);
+                sscanf(argv[6], "%ul", &rns_b.r3);
 
                 fprintf(stderr, "The two numbers are:\n");
                 fprint_rns(stderr, &rns_a);
@@ -202,7 +202,7 @@ int main(int argc, char **argv)
                 fprint_rns(stdout, &rns_diff);
                 fprint_rns(stdout, &rns_prod);
         } else {
-                fprintf(stderr, usage, rns_base.r0, rns_base.r1, rns_base.r2);
+                fprintf(stderr, usage, rns_base.r1, rns_base.r2, rns_base.r3);
                 return 1;
         }
 

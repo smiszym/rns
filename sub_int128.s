@@ -1,7 +1,7 @@
         .global sub_int128
-        .global sub_r0_from_int128
         .global sub_r1_from_int128
         .global sub_r2_from_int128
+        .global sub_r3_from_int128
 
         .text
 sub_int128:
@@ -22,13 +22,13 @@ calculating:
         ret
 
 
-sub_r0_from_int128:
+sub_r1_from_int128:
         movl 0x0(%rsi), %eax
         jmp sub_r_from_int128
-sub_r1_from_int128:
+sub_r2_from_int128:
         movl 0x4(%rsi), %eax
         jmp sub_r_from_int128
-sub_r2_from_int128:
+sub_r3_from_int128:
         movl 0x8(%rsi), %eax
         # passthrough
 sub_r_from_int128:

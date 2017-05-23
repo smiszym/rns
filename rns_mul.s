@@ -10,7 +10,7 @@ rns_mul:
         movq $rns_base, %rbx
 
 
-        # === r0 ===
+        # === r1 ===
         xorq %rax, %rax
         movl 0x0(%rsi), %eax
 
@@ -38,7 +38,7 @@ rns_mul:
         pop %rdx
 
 
-        # === r1 ===
+        # === r2 ===
         xorq %rax, %rax
         movl 0x4(%rsi), %eax
 
@@ -66,7 +66,7 @@ rns_mul:
         pop %rdx
 
 
-        # === r2 ===
+        # === r3 ===
         xorq %rax, %rax
         movl 0x8(%rsi), %eax
 

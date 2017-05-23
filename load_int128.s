@@ -1,15 +1,15 @@
-        .global load_r0_to_int128
         .global load_r1_to_int128
         .global load_r2_to_int128
+        .global load_r3_to_int128
 
         .text
-load_r0_to_int128:
+load_r1_to_int128:
         movl 0x0(%rsi), %eax
         jmp load_int128
-load_r1_to_int128:
+load_r2_to_int128:
         movl 0x4(%rsi), %eax
         jmp load_int128
-load_r2_to_int128:
+load_r3_to_int128:
         movl 0x8(%rsi), %eax
         # passthrough
 load_int128:

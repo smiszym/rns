@@ -10,7 +10,7 @@ rns_sub:
         movq $rns_base, %rbx
 
 
-        # === r0 ===
+        # === r1 ===
         xorq %rax, %rax
         movl 0x0(%rsi), %eax
 
@@ -31,7 +31,7 @@ rns_sub:
         movl %eax, 0x0(%rdi)
 
 
-        # === r1 ===
+        # === r2 ===
         xorq %rax, %rax
         movl 0x4(%rsi), %eax
 
@@ -52,7 +52,7 @@ rns_sub:
         movl %eax, 0x4(%rdi)
 
 
-        # === r2 ===
+        # === r3 ===
         xorq %rax, %rax
         movl 0x8(%rsi), %eax
 

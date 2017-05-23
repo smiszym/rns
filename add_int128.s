@@ -1,7 +1,7 @@
         .global add_int128
-        .global add_r0_to_int128
         .global add_r1_to_int128
         .global add_r2_to_int128
+        .global add_r3_to_int128
 
         .text
 add_int128:
@@ -22,13 +22,13 @@ calculating:
         ret
 
 
-add_r0_to_int128:
+add_r1_to_int128:
         movl 0x0(%rsi), %eax
         jmp add_r_to_int128
-add_r1_to_int128:
+add_r2_to_int128:
         movl 0x4(%rsi), %eax
         jmp add_r_to_int128
-add_r2_to_int128:
+add_r3_to_int128:
         movl 0x8(%rsi), %eax
         # passthrough
 add_r_to_int128:

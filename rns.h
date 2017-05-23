@@ -6,9 +6,9 @@
 #include <stdio.h>
 
 struct rns {
-        uint32_t r0;
         uint32_t r1;
         uint32_t r2;
+        uint32_t r3;
         uint32_t reserved; // not used; only 3 modules are used
 } __attribute__((packed));
 
@@ -43,21 +43,21 @@ void int128_to_dec(char *buffer, const struct int128 *number);
 
 // Loads a 32-bit integer, one of the RNS remainders,
 // into a 128-bit variable
-void load_r0_to_int128(struct int128 *dest, const struct rns *src);
 void load_r1_to_int128(struct int128 *dest, const struct rns *src);
 void load_r2_to_int128(struct int128 *dest, const struct rns *src);
+void load_r3_to_int128(struct int128 *dest, const struct rns *src);
 
 // Adds a 32-bit integer, one of the RNS remainders,
 // to a 128-bit variable
-void add_r0_to_int128(struct int128 *dest, const struct rns *src);
 void add_r1_to_int128(struct int128 *dest, const struct rns *src);
 void add_r2_to_int128(struct int128 *dest, const struct rns *src);
+void add_r3_to_int128(struct int128 *dest, const struct rns *src);
 
 // Subtracts a 32-bit integer, one of the RNS remainders,
 // from a 128-bit variable
-void sub_r0_from_int128(struct int128 *dest, const struct rns *src);
 void sub_r1_from_int128(struct int128 *dest, const struct rns *src);
 void sub_r2_from_int128(struct int128 *dest, const struct rns *src);
+void sub_r3_from_int128(struct int128 *dest, const struct rns *src);
 
 int cmp_int128(struct int128 *a, const struct int128 *b);
 
