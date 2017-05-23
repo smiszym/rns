@@ -20,7 +20,7 @@ int_to_rns:
         #
         # (*) Because it may be confusing, here are
         #     meanings of the symbols:
-        #       r1, r2, r3 - modules in RNS representation
+        #       r1, r2, r3 - residues in RNS representation
         #                    of the input value
         #       %r8, %r9 - two 64-bit processor registers
 
