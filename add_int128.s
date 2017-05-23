@@ -1,4 +1,3 @@
-        .global add_int128
         .global add_r1_to_int128
         .global add_r2_to_int128
         .global add_r3_to_int128

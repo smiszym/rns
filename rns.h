@@ -64,7 +64,6 @@ int cmp_int128(struct int128 *a, const struct int128 *b);
 bool is_int128_zero(struct int128 *value);
 
 void copy_int128(struct int128 *dest, const struct int128 *src);
-void add_int128(struct int128 *dest, const struct int128 *src);
 void sub_int128(struct int128 *dest, const struct int128 *src);
 
 // The function stores the quotient in value
