@@ -1,16 +1,24 @@
 Copyright (C) 2016, Michał Szymański
-Praca na zaliczenie projektu Architektury Komputerów 2
+Praca na zaliczenie projektu w ramach przedmiotu
+Architektura Komputerów 2
 Politechnika Wrocławska
 
-Files in this directory:
 
- Python implementation:
-   rns.py -- implementation of RNS system in Python
-   pytests.py -- test suite for Python implementation
+Files in this directory
+~~~~~~~~~~~~~~~~~~~~~~~
 
- Assembler implementation:
-   rns.h
-     -- header file for RNS implementation
+ Written in Python:
+   rns.py ------- implementation of RNS system in Python
+   pytests.py --- test suite for Python implementation
+
+ Written in C:
+   rns.h -------- header file for RNS implementation
+   main.c ------- main program doing computations in RNS using Assembler library
+   utils.c ------ utility functions, called from main program
+   unit_test.h -- header file for unit testing
+   unit_test.c -- unit testing program
+
+ Written in x86-64 assembly:
    rns_env.s, rns_add.s, rns_sub.s, rns_mul.s
      -- implementation of RNS system in Assembler
    read_int128.s, add_int128.s, sub_int128.s, load_int128.s, copy_int128.s,
@@ -18,10 +26,10 @@ Files in this directory:
      -- implementation of 128-bit number arithmetic
    int_to_rns.s
      -- implementation of conversion form natural binary to RNS form
-   main.c
-     -- main program doing computations in RNS using Assembler library
-   utils.c
-     -- utility functions, called from main program
+
+
+User Manual
+~~~~~~~~~~~
 
 Launching the Assembler implementation:
   ./rns 56 78
@@ -37,3 +45,12 @@ in RNS notation, one in a line.
 
 To run a test suite on a whole project, run:
   ./pytests.py
+
+
+Developer's Manual
+~~~~~~~~~~~~~~~~~~
+
+You should take a first look at rns.h. There are all the prototypes of
+functions implemented in Assembly to perform RNS-based arithmetic.
+
+For the implementation of a particular function, refer to *.s files.
