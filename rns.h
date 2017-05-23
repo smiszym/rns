@@ -31,7 +31,7 @@ void rns_mul(struct rns *result, struct rns *a, struct rns *b);
 /*
  * Returns 0 if the conversion was successful; 1 otherwise.
  */
-int read_int128(struct int128 *result, const char *s);
+int dec_to_int128(struct int128 *result, const char *s);
 
 // This function converts a 128-bit number into a decimal
 // representation and stores the result as ASCII null-terminated

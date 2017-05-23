@@ -38,7 +38,7 @@ int unit_testing(int argc, char **argv)
         if (argc == 4 && !strcmp(argv[2], "dec_to_bin")) {
                 fprintf(stderr, "Read a decimal number %s.\n", argv[3]);
 
-                if (read_int128(&value_a, argv[3])) {
+                if (dec_to_int128(&value_a, argv[3])) {
                         fprintf(stderr, "Error while converting `%s` to binary\n", argv[1]);
                         return 1;
                 }
@@ -53,7 +53,7 @@ int unit_testing(int argc, char **argv)
         } else if (argc == 4 && !strcmp(argv[2], "modulo")) {
                 fprintf(stderr, "Read a decimal number %s.\n", argv[3]);
 
-                if (read_int128(&value_a, argv[3])) {
+                if (dec_to_int128(&value_a, argv[3])) {
                         fprintf(stderr, "Error while converting `%s` to binary\n", argv[1]);
                         return 1;
                 }

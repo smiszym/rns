@@ -98,7 +98,7 @@ int main(int argc, char **argv)
         if (argc == 2) {
                 fprintf(stderr, "Read a decimal number %s.\n", argv[1]);
 
-                if (read_int128(&value_a, argv[1])) {
+                if (dec_to_int128(&value_a, argv[1])) {
                         fprintf(stderr, "Error while converting `%s` to binary\n", argv[1]);
                         return 1;
                 }
@@ -128,12 +128,12 @@ int main(int argc, char **argv)
         } else if (argc == 3) {
                 fprintf(stderr, "Reading two decimal numbers: %s and %s\n", argv[1], argv[2]);
 
-                if (read_int128(&value_a, argv[1])) {
+                if (dec_to_int128(&value_a, argv[1])) {
                         fprintf(stderr, "Error while converting `%s` to binary\n", argv[1]);
                         return 1;
                 }
 
-                if (read_int128(&value_b, argv[2])) {
+                if (dec_to_int128(&value_b, argv[2])) {
                         fprintf(stderr, "Error while converting `%s` to binary\n", argv[2]);
                         return 1;
                 }

@@ -1,7 +1,7 @@
-        .global read_int128
+        .global dec_to_int128
 
         .text
-read_int128:
+dec_to_int128:
         # %rdi - result address
         # %rsi - string address
         pushq %rbx
