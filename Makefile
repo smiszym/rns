@@ -5,9 +5,8 @@ ASFLAGS += -g
 
 .PHONY: all default clean
 
+all: default
 default: rns
-
-all: rns_MichalSzymanski.tar.bz2
 
 HEADERS += rns.h
 HEADERS += unit_test.h
@@ -48,12 +47,16 @@ utils.o: utils.c ${HEADERS}
 rns: ${RNS_LIB_OBJECTS} ${INT128_LIB_OBJECTS}
 	gcc ${CFLAGS} -o $@ $^
 
+clean:
+	rm -rf *.o rns __pycache__
+
 rns_MichalSzymanski.tar.bz2: rns
 	rm -rf rns_MichalSzymanski
 	mkdir rns_MichalSzymanski
-	cp -t rns_MichalSzymanski *.h *.c *.s *.py Makefile README
-	tar cvjf rns_MichalSzymanski.tar.bz2 rns_MichalSzymanski
-	rm -rf rns_MichalSzymanski
+	cp -t rns_MichalSzymanski *.h *.c *.s *.py README
 
-clean:
-	rm -rf *.o rns __pycache__
+	# strip this part of the Makefile
+	sed /tar.bz2/q Makefile | head -n -2 >rns_MichalSzymanski/Makefile
+
+	tar -cvjf $@ rns_MichalSzymanski
+	rm -rf rns_MichalSzymanski
