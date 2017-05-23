@@ -21,11 +21,17 @@ Files in this directory
  Written in x86-64 assembly:
    rns_env.s, rns_add.s, rns_sub.s, rns_mul.s
      -- implementation of RNS system in Assembler
-   read_int128.s, add_int128.s, sub_int128.s, load_int128.s, copy_int128.s,
-   shl_int128.s
+
+   dec_to_int128.s, int128_to_dec.s
+     -- implementation of conversion between decimal ASCII
+        and binary 128-bit numbers
+
+   add_int128.s, sub_int128.s, shl_int128.s, divide_int128_by_10.s,
+   int128_mod_M.s, load_int128.s, cmp_int128.s, is_int128_zero.s
      -- implementation of 128-bit number arithmetic
-   int_to_rns.s
-     -- implementation of conversion form natural binary to RNS form
+
+   int_to_rns.s, rns_to_int.s
+     -- implementation of conversion form natural binary to RNS form and back
 
 
 User Manual
@@ -45,6 +51,8 @@ in RNS notation, one in a line.
 
 To run a test suite on a whole project, run:
   ./pytests.py
+
+The test suite tests both the Python RNS library and the native program.
 
 
 Developer's Manual
