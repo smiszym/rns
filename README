@@ -37,14 +37,19 @@ Files in this directory
 User Manual
 ~~~~~~~~~~~
 
+The program is written for x86-64 Linux operating system.
+
+The program needs to be compiled with the command:
+  $ make
+
 Launching the Assembler implementation:
-  ./rns 56 78
+  $ ./rns 56 78
 will compute sum, difference and multiplication of the given values in decimal
 system. All computations will be done using Assembler RNS library.
 
 There is also another mode of execution, without conversion to decimal.
 When launched as:
-  ./rns 1 2 3 4 9 8 7 6
+  $ ./rns 1 2 3 4 9 8 7 6
 the program will compute sum, difference and multiplication of the given
 values, interpreted as [1 2 3 4] and [9 8 7 6], and print the results also
 in RNS notation, one in a line.
@@ -52,10 +57,10 @@ in RNS notation, one in a line.
 Computer-readable output is sent to stdout (bare numbers), while human-readable
 output is sent to stderr (with additional information). So, to see only
 human-readable output, one may use:
-  ./rns 1754 5347 2>/dev/null
+  $ ./rns 1754 5347 2>/dev/null
 
 To run a test suite on a whole project, run:
-  ./pytests.py
+  $ ./pytests.py
 
 The test suite tests both the Python RNS library and the native program.
 
